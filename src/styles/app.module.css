@@ -1,0 +1,50 @@
+div, ul, h1, footer{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app{
+  width: 100vw;
+  height: 100vh;
+  background: #222;
+  overflow-x: hidden;
+}
+
+h1, .calendar, footer{
+  width: 70%;
+  color: white;
+}
+
+h1{
+  text-align: right;
+  padding: 0 16px 8px 0;
+}
+
+.calendar{
+  height: 70%;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+
+.header{
+  background: red;
+  list-style-type: none;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.header li{
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.days{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+footer{
+  text-align: center;
+  margin-top: 2rem;
+}

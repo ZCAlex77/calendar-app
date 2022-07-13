@@ -1,0 +1,19 @@
+.flexContainer{
+  display: flex;
+}
+
+.flexColumn{
+  composes: flexContainer;
+  flex-direction: column;
+}
+
+.flexRow{
+  composes: flexContainer;
+  flex-direction: row;
+}
+
+.flexCenter{
+  composes: flexContainer;
+  align-items: center;
+  justify-content: center;
+}

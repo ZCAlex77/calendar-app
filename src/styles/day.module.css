@@ -1,0 +1,24 @@
+.day{
+  background: #fff;
+  border: 1px solid #222;
+  aspect-ratio: 1/0.6;
+  cursor: pointer;
+}
+
+.day p{
+  font-size: 1.3rem;
+  color: #222;
+}
+
+.current{
+  background: lime;
+  color: #fff;
+}
+
+.past{
+  background: linear-gradient(45deg, #aaa, #bbb, #aaa);
+}
+
+.none{
+  background: linear-gradient(45deg, #333, #444, #333);
+}
