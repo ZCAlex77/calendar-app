@@ -1,12 +1,16 @@
 import appStyle from './styles/app.module.css';
 import flex from './styles/flex.module.css';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import Day from './components/Day';
+import EventManager from './components/EventManager';
+import { useState } from 'react';
 
 function App() {
   const date = new Date(Date.now());
   const today = date.getDate();
   const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const numOfDaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const [managerOpenState, setManagerOpenState] = useState(0);
 
   const getNumOfDays = (month, year) => {
     let num = numOfDaysPerMonth[month];
@@ -20,6 +24,9 @@ function App() {
     for(let i = 0; i < currDay%7; i++)
       dayArr.unshift(-(numOfDaysPerMonth[lastMonth]-i));
     return dayArr;
+  }
+  const toggleManager = () =>{
+    setManagerOpenState(1-managerOpenState);
   }
 
   return (
@@ -35,6 +42,8 @@ function App() {
           }
         </ul>
       </div>
+      <button onClick={toggleManager} className={`${appStyle.taskButton} ${flex.flexCenter}`}><AssignmentIcon /></button>
+      <EventManager openState={managerOpenState?'open':''} />
       <footer>Calendar App &copy; Alexandru Zmău 2022</footer>
     </div>
   );

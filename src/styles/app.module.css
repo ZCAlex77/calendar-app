@@ -1,4 +1,4 @@
-div, ul, h1, footer{
+div, ul, h1, footer, button{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,9 +6,10 @@ div, ul, h1, footer{
 
 .app{
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: #222;
   overflow-x: hidden;
+  padding-top: 32px;
 }
 
 h1, .calendar, footer{
@@ -22,9 +23,7 @@ h1{
 }
 
 .calendar{
-  height: 70%;
-  border-radius: 10px 10px 0 0;
-  overflow: hidden;
+  min-height: 70%;
 }
 
 .header{
@@ -32,6 +31,7 @@ h1{
   list-style-type: none;
   padding: 16px 0;
   font-weight: bold;
+  border-radius: 10px 10px 0 0;
 }
 
 .header li{
@@ -48,9 +48,19 @@ h1{
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+.taskButton{
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  font-size: 3rem;
+  border-radius: 50%;
+  z-index: 20;
+  cursor: pointer;
+  width: 70px;
+  aspect-ratio: 1/1;
+}
+
 footer{
   text-align: center;
   margin-top: 32px;
-  position: absolute;
-  bottom: 16px;
 }
