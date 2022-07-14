@@ -49,7 +49,7 @@ h1{
 }
 
 .taskButton{
-  position: absolute;
+  position: fixed;
   top: 32px;
   right: 32px;
   font-size: 3rem;
