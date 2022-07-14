@@ -27,13 +27,13 @@ export default function EventManager({ selectedDay, openState }){
       <h1>Event manager</h1>
       <h3>Events planned for {`${months[date.getMonth()]} ${selectedDay}`}:</h3>
       <ul className={flex.flexColumn}>
-        {eventList.filter(el => el.date.day === selectedDay).map(el => <Event key={Math.floor(Math.random()*10000)} text={el.text} eventId={el.id} />)}
         <li>
           <form onSubmit={handleSubmit} className={`${managerStyle.addEvent} ${flex.flexRow}`}>
             <button><AddIcon /></button>
             <input onChange={ev => setText(ev.target.value)} type="text" placeholder="Type event name here" value={text} required />
           </form>
         </li>
+        {eventList.filter(el => el.date.day === selectedDay).map(el => <Event key={Math.floor(Math.random()*10000)} text={el.text} eventId={el.id} />)}
       </ul>
     </div>
   )
