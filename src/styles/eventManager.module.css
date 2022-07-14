@@ -9,7 +9,25 @@
   border-radius: 10px;
   overflow: hidden;
   display: none;
+  padding: 0 16px;
+}
+.manager :where(h1, h3, li){color: #fff; font-weight: normal;}
+.manager h1{text-align: center; padding: 16px; width: 100%;}
+.manager ul{width: 100%; height: auto; list-style-type: none; gap: 10px;}
+.manager ul li{padding: .5rem; justify-content: space-between; border: 1px solid #fff; border-radius: 10px;}
+.manager ul li button{cursor: pointer; border-radius: 5px; color: #222; background: #fff; border: 0;}
+.open{display: block;}
+
+.addEvent{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.manager h1{color: #fff; text-align: center; padding: 16px; width: 100%;}
-.open{display: block;}
+.addEvent input{
+  height: 20px;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0 10px 10px 0;
+  border: 0;
+}

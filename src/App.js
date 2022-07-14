@@ -11,6 +11,7 @@ function App() {
   const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const numOfDaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const [managerOpenState, setManagerOpenState] = useState(0);
+  const [selectedDay, setSelectedDay] = useState(today);
 
   const getNumOfDays = (month, year) => {
     let num = numOfDaysPerMonth[month];
@@ -43,7 +44,7 @@ function App() {
         </ul>
       </div>
       <button onClick={toggleManager} className={`${appStyle.taskButton} ${flex.flexCenter}`}><AssignmentIcon /></button>
-      <EventManager openState={managerOpenState?'open':''} />
+      <EventManager selectedDay={selectedDay} openState={managerOpenState?'open':''} />
       <footer>Calendar App &copy; Alexandru Zmău 2022</footer>
     </div>
   );
