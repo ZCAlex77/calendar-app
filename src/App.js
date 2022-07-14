@@ -17,7 +17,7 @@ function App() {
     let dayArr = [], lastMonth = month?month-1:11;
     for(let i = 1; i <= getNumOfDays(month, date.getFullYear()); i++)
       dayArr.push(i);
-    for(let i = 0; i < currDay%7 - 1; i++)
+    for(let i = 0; i < currDay%7; i++)
       dayArr.unshift(-(numOfDaysPerMonth[lastMonth]-i));
     return dayArr;
   }
