@@ -33,7 +33,7 @@ export default function EventManager({ selectedDay, openState }){
             <input onChange={ev => setText(ev.target.value)} type="text" placeholder="Type event name here" value={text} required />
           </form>
         </li>
-        {eventList.filter(el => el.date.day === selectedDay).map(el => <Event key={Math.floor(Math.random()*10000)} text={el.text} eventId={el.id} />)}
+        {eventList.filter(el => el.date.day === selectedDay).map(el => <Event key={`${Math.floor(Math.random()*10000)}${Math.floor(Math.random()*10000)}`} text={el.text} eventId={el.id} />)}
       </ul>
     </div>
   )
