@@ -6,19 +6,19 @@ function App() {
   const date = new Date(Date.now());
   const today = date.getDate();
   const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  
-  const getNumOfDays = () => {
-    const numOfDaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    let num = numOfDaysPerMonth[date.getMonth()];
-    if(date.getFullYear() % 4 === 0 && num === 28) num += 1;
+  const numOfDaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  const getNumOfDays = (month, year) => {
+    let num = numOfDaysPerMonth[month];
+    if(year % 4 === 0 && num === 28) num += 1;
     return num;
   }
-  const generateDayArray = () =>{
-    let dayArr = [];
-    for(let i = 1; i <= getNumOfDays(); i++)
+  const generateDayArray = (month, currDay) =>{
+    let dayArr = [], lastMonth = month?month-1:11;
+    for(let i = 1; i <= getNumOfDays(month, date.getFullYear()); i++)
       dayArr.push(i);
-    for(let i = 0; i < date.getDay()%7 - 1; i++)
-      dayArr.unshift(0);
+    for(let i = 0; i < currDay%7 - 1; i++)
+      dayArr.unshift(-(numOfDaysPerMonth[lastMonth]-i));
     return dayArr;
   }
 
@@ -31,7 +31,7 @@ function App() {
         </ul>
         <ul className={appStyle.days}>
           {
-            generateDayArray().map(day => <Day key={`${day}${Math.floor(Math.random()*1000)}`} num={day} type={day === today?'current':(day < today?'past':'')} />)
+            generateDayArray(date.getMonth(), date.getDay()).map(day => <Day key={`${day}${Math.floor(Math.random()*1000)}`} num={day} today={today} />)
           }
         </ul>
       </div>
