@@ -4,6 +4,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import Day from './components/Day';
 import EventManager from './components/EventManager';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function App() {
   const date = new Date(Date.now());
@@ -12,6 +13,7 @@ function App() {
   const numOfDaysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const [managerOpenState, setManagerOpenState] = useState(0);
   const [selectedDay, setSelectedDay] = useState(today);
+  const eventList = useSelector(state => state);
 
   const getNumOfDays = (month, year) => {
     let num = numOfDaysPerMonth[month];
@@ -48,7 +50,10 @@ function App() {
           }
         </ul>
       </div>
-      <button onClick={toggleManager} className={`${appStyle.taskButton} ${flex.flexCenter}`}><AssignmentIcon /></button>
+      <button onClick={toggleManager} className={`${appStyle.taskButton} ${flex.flexCenter}`}>
+        <AssignmentIcon />
+        {eventList.filter(el => el.date.day === selectedDay).length?(<div className={appStyle.notification}>{eventList.filter(el => el.date.day === selectedDay).length}</div>):''}
+      </button>
       <EventManager selectedDay={selectedDay} openState={managerOpenState?'open':''} />
       <footer>Calendar App &copy; Alexandru Zmău 2022</footer>
     </div>

@@ -59,6 +59,17 @@ h1{
   width: 70px;
   aspect-ratio: 1/1;
 }
+.notification{
+  background: red;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
 
 footer{
   text-align: center;

@@ -1,5 +1,6 @@
-.day{border: 1px solid #222; aspect-ratio: 1/0.6; cursor: pointer;}
+.day{border: 1px solid #222; aspect-ratio: 1/0.6; cursor: pointer; position: relative;}
 .day p{font-size: 1.3rem; color: #222;}
+.day div{color: #222; position: absolute; bottom: 2px; right: 2px;}
 .current{background: lime; color: #fff;}
 .past{background: linear-gradient(45deg, #aaa, #bbb, #aaa);}
 .future{background: #fff;}
