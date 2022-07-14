@@ -39,7 +39,7 @@ function App() {
         </ul>
         <ul className={appStyle.days}>
           {
-            generateDayArray(date.getMonth(), date.getDay()).map(day => <Day key={`${day}${Math.floor(Math.random()*1000)}`} num={day} today={today} />)
+            generateDayArray(date.getMonth(), date.getDay()).map(day => <Day key={`${day}${Math.floor(Math.random()*1000)}`} num={day} today={today} setSelectedDay={setSelectedDay} openManager={setManagerOpenState} />)
           }
         </ul>
       </div>
