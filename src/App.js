@@ -41,7 +41,7 @@ function App() {
         </ul>
         <ul className={appStyle.days}>
           {
-            generateDayArray(date.getMonth(), date.getDay()).map(day => 
+            generateDayArray(date.getMonth(), date.getDate()).map(day => 
               <Day key={`${day}${Math.floor(Math.random()*1000)}`} 
                    num={day} 
                    today={today} 
