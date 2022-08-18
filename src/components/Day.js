@@ -1,23 +1,24 @@
+// import styles
 import flex from '../styles/flex.module.css';
 import dayStyle from '../styles/day.module.css';
-import NewReleasesIcon from '@mui/icons-material/NewReleases';
-import { useSelector } from 'react-redux';
 
-export default function Day({ day, today, setSelectedDay, openManager }) {
-  let dayClass =
-    day === 0
-      ? 'none'
-      : day < today
-      ? 'past'
-      : day === today
-      ? 'current'
-      : 'future';
+// import components
+import NewReleasesIcon from '@mui/icons-material/NewReleases';
+
+// libraries
+import { useSelector } from 'react-redux';
+import dateUtility from '../utility/dateUtility';
+
+export default function Day({ date, setSelectedDate, openManager }) {
+  let dayClass = date
+    ? ['past', 'current', 'future'][dateUtility.compareToToday(date)]
+    : 'none';
 
   const eventList = useSelector((state) => state);
 
   const handleClick = () => {
-    if (day >= today) {
-      setSelectedDay(day);
+    if (dayClass !== 'past') {
+      setSelectedDate(date);
       openManager(1);
     }
   };
@@ -27,8 +28,9 @@ export default function Day({ day, today, setSelectedDay, openManager }) {
       onClick={handleClick}
       className={`${flex.flexCenter} ${dayStyle.day} ${dayStyle[dayClass]}`}
     >
-      <p>{day}</p>
-      {eventList.filter((el) => el.date.day === day).length > 0 ? (
+      <p>{date?.getDate()}</p>
+      {eventList.filter((event) => dateUtility.checkSameDay(event.date, date))
+        .length ? (
         <div>
           <NewReleasesIcon />
         </div>

@@ -1,13 +1,15 @@
-import { ADD_EVENT, REMOVE_EVENT } from "../actionTypes";
+import { ADD_EVENT, REMOVE_EVENT } from '../actionTypes';
 
-let date = new Date(Date.now());
-let initialState = JSON.parse(localStorage.getItem("events"));
-if (!initialState) initialState = [];
-else initialState = initialState.filter((el) => el.date.day >= date.getDate());
+let initialState = JSON.parse(localStorage.getItem('events')) ?? [];
+if (initialState.length)
+  initialState.forEach((event) => (event.date = new Date(event.date)));
+
+// TODO: Filter past events
 
 export const eventReducer = (state = initialState, action) => {
   const updateStorage = (newState) =>
-    localStorage.setItem("events", JSON.stringify(newState));
+    localStorage.setItem('events', JSON.stringify(newState));
+
   switch (action.type) {
     case ADD_EVENT:
       let stateAfterAdd = [...state, action.payload];

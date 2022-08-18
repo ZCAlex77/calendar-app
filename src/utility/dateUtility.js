@@ -1,6 +1,8 @@
 import { format } from 'date-fns';
 import startOfMonth from 'date-fns/startOfMonth';
 import getDaysInMonth from 'date-fns/getDaysInMonth';
+import compareAsc from 'date-fns/compareAsc';
+import isSameDay from 'date-fns/isSameDay';
 
 const dateUtility = (() => {
   const today = new Date();
@@ -15,7 +17,11 @@ const dateUtility = (() => {
   ];
 
   const getCurrentDateTitle = () => format(today, 'iii, LLL do y');
+  const getEventManagerTitle = (date) =>
+    `Events planned for ${format(date, 'LLL do')}`;
   const getStartOfMonth = (date) => startOfMonth(date);
+  const getDateForDay = (day, date) =>
+    new Date(date.getFullYear(), date.getMonth(), day);
   const generateDayArr = (date) => {
     let dayArr = [];
     let firstWeekDayOfMonth = getStartOfMonth(date).getDay();
@@ -26,13 +32,20 @@ const dateUtility = (() => {
 
     return dayArr;
   };
+  const checkSameDay = (date1, date2) => isSameDay(date1, date2);
+  const compareToToday = (date) =>
+    checkSameDay(date, today) ? 1 : compareAsc(date, today) + 1;
 
   return {
     today,
     weekDays,
     getCurrentDateTitle,
+    getEventManagerTitle,
     getStartOfMonth,
+    getDateForDay,
     generateDayArr,
+    checkSameDay,
+    compareToToday,
   };
 })();
 

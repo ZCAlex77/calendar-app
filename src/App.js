@@ -8,16 +8,25 @@ import Day from './components/Day';
 import EventManager from './components/EventManager';
 
 // libraries
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { v4 as uuid4 } from 'uuid';
 import dateUtility from './utility/dateUtility';
 
 function App() {
+  const getSelectedEvents = () =>
+    eventList.filter((event) =>
+      dateUtility.checkSameDay(event.date, selectedDate)
+    );
+
   const [managerOpenState, setManagerOpenState] = useState(0);
   const [selectedDate, setSelectedDate] = useState(dateUtility.today);
-  const [selectedDay, setSelectedDay] = useState(selectedDate.getDate());
   const eventList = useSelector((state) => state);
+  const [selectedEvents, setSelectedEvents] = useState(getSelectedEvents());
+
+  useEffect(() => {
+    setSelectedEvents(() => getSelectedEvents());
+  }, [selectedDate]);
 
   const toggleManager = () => {
     setManagerOpenState(1 - managerOpenState);
@@ -36,9 +45,8 @@ function App() {
           {dateUtility.generateDayArr(selectedDate).map((day) => (
             <Day
               key={uuid4()}
-              day={day}
-              today={dateUtility.today.getDate()}
-              setSelectedDay={setSelectedDay}
+              date={day ? dateUtility.getDateForDay(day, selectedDate) : null}
+              setSelectedDate={setSelectedDate}
               openManager={setManagerOpenState}
             />
           ))}
@@ -49,20 +57,14 @@ function App() {
         className={`${appStyle.taskButton} ${flex.flexCenter}`}
       >
         <AssignmentIcon />
-        {eventList.filter((el) => el.date.day === selectedDate.getDate())
-          .length ? (
-          <div className={appStyle.notification}>
-            {
-              eventList.filter((el) => el.date.day === selectedDate.getDate())
-                .length
-            }
-          </div>
+        {selectedEvents.length ? (
+          <div className={appStyle.notification}>{selectedEvents.length}</div>
         ) : (
           ''
         )}
       </button>
       <EventManager
-        selectedDay={selectedDay}
+        selectedDate={selectedDate}
         openState={managerOpenState ? 'open' : ''}
       />
       <footer>Calendar App &copy; Alexandru Zmău 2022</footer>
