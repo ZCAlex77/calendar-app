@@ -42,14 +42,22 @@ function App() {
           ))}
         </ul>
         <ul className={appStyle.days}>
-          {dateUtility.generateDayArr(selectedDate).map((day) => (
-            <Day
-              key={uuid4()}
-              date={day ? dateUtility.getDateForDay(day, selectedDate) : null}
-              setSelectedDate={setSelectedDate}
-              openManager={setManagerOpenState}
-            />
-          ))}
+          {dateUtility.generateDayArr(selectedDate).map((day) => {
+            let date = day
+              ? dateUtility.getDateForDay(day, selectedDate)
+              : null;
+            return (
+              <Day
+                key={uuid4()}
+                date={date}
+                isSelected={
+                  date ? dateUtility.checkSameDay(date, selectedDate) : false
+                }
+                setSelectedDate={setSelectedDate}
+                openManager={setManagerOpenState}
+              />
+            );
+          })}
         </ul>
       </div>
       <button

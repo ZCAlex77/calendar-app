@@ -9,7 +9,12 @@ import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import { useSelector } from 'react-redux';
 import dateUtility from '../utility/dateUtility';
 
-export default function Day({ date, setSelectedDate, openManager }) {
+export default function Day({
+  date,
+  isSelected,
+  setSelectedDate,
+  openManager,
+}) {
   let dayClass = date
     ? ['past', 'current', 'future'][dateUtility.compareToToday(date)]
     : 'none';
@@ -17,7 +22,7 @@ export default function Day({ date, setSelectedDate, openManager }) {
   const eventList = useSelector((state) => state);
 
   const handleClick = () => {
-    if (dayClass !== 'past') {
+    if (dayClass !== 'past' && dayClass !== 'none') {
       setSelectedDate(date);
       openManager(1);
     }
@@ -26,7 +31,9 @@ export default function Day({ date, setSelectedDate, openManager }) {
   return (
     <li
       onClick={handleClick}
-      className={`${flex.flexCenter} ${dayStyle.day} ${dayStyle[dayClass]}`}
+      className={`${flex.flexCenter} ${dayStyle.day} ${dayStyle[dayClass]} ${
+        isSelected ? dayStyle.selectedDay : ''
+      }`}
     >
       <p>{date?.getDate()}</p>
       {eventList.filter((event) => dateUtility.checkSameDay(event.date, date))

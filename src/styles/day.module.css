@@ -3,6 +3,7 @@
   aspect-ratio: 1/0.6;
   cursor: pointer;
   position: relative;
+  box-sizing: border-box;
 }
 .day p {
   font-size: 1.3rem;
@@ -14,8 +15,11 @@
   bottom: 2px;
   right: 2px;
 }
+.selectedDay {
+  border: 4px solid red;
+}
 .current {
-  background: lime;
+  background: red;
   color: #fff;
 }
 .past {
