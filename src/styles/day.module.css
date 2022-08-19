@@ -7,6 +7,8 @@
 }
 .day p {
   font-size: 1.3rem;
+}
+.day:not(.current) {
   color: #222;
 }
 .day div {
@@ -20,6 +22,10 @@
 }
 .current {
   background: red;
+  color: #fff;
+  border: 0;
+}
+.current div {
   color: #fff;
 }
 .past {

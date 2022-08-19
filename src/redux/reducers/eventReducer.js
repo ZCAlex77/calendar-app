@@ -1,10 +1,17 @@
 import { ADD_EVENT, REMOVE_EVENT } from '../actionTypes';
+import dateUtility from '../../utility/dateUtility';
 
 let initialState = JSON.parse(localStorage.getItem('events')) ?? [];
-if (initialState.length)
+if (initialState.length) {
+  // for each date saved as text, create a new Date object
   initialState.forEach((event) => (event.date = new Date(event.date)));
 
-// TODO: Filter past events
+  // delete events from past days
+  initialState = initialState.filter(
+    (event) => dateUtility.compareToToday(event.date) !== 0
+  );
+  localStorage.setItem('events', JSON.stringify(initialState));
+}
 
 export const eventReducer = (state = initialState, action) => {
   const updateStorage = (newState) =>

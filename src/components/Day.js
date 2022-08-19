@@ -24,7 +24,7 @@ export default function Day({
   const handleClick = () => {
     if (dayClass !== 'past' && dayClass !== 'none') {
       setSelectedDate(date);
-      openManager(1);
+      //openManager(1);
     }
   };
 
