@@ -41,3 +41,6 @@
   color: transparent;
   user-select: none;
 }
+.day:last-child {
+  border-bottom-right-radius: 10px;
+}

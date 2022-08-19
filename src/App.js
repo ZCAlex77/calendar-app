@@ -32,9 +32,22 @@ function App() {
     setManagerOpenState(1 - managerOpenState);
   };
 
+  const handleMonthSwitch = (amountOfMonths) => {
+    setSelectedDate((selectedDate) =>
+      dateUtility.switchMonth(selectedDate, amountOfMonths)
+    );
+  };
+
   return (
     <div className={`${appStyle.app} ${flex.flexCenter} ${flex.flexColumn}`}>
-      <h1>{dateUtility.getCurrentDateTitle()}</h1>
+      <div className={`${appStyle.titleContainer} ${flex.flexCenter}`}>
+        <div className={flex.flexCenter}>
+          <button onClick={() => handleMonthSwitch(-1)}>&lt;</button>
+          <h1>{dateUtility.getMonthName(selectedDate)}</h1>
+          <button onClick={() => handleMonthSwitch(1)}>&gt;</button>
+        </div>
+        <h1>{dateUtility.getCurrentDateTitle(selectedDate)}</h1>
+      </div>
       <div className={appStyle.calendar}>
         <ul className={`${appStyle.header} ${flex.flexRow}`}>
           {dateUtility.weekDays.map((day) => (

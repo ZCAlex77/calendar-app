@@ -1,10 +1,19 @@
-div, ul, h1, footer, button{
+div,
+ul,
+h1,
+footer,
+button {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.app{
+body,
+html {
+  overflow-x: hidden;
+}
+
+.app {
   width: 100vw;
   min-height: 100vh;
   background: #222;
@@ -12,21 +21,51 @@ div, ul, h1, footer, button{
   padding-top: 32px;
 }
 
-h1, .calendar, footer{
+.titleContainer h1,
+.calendar,
+footer {
   width: 70%;
   color: white;
 }
 
-h1{
-  text-align: right;
-  padding: 0 16px 8px 0;
+.titleContainer {
+  width: 70%;
+  height: 3rem;
+  justify-content: space-between !important;
+  color: #fff;
 }
 
-.calendar{
+.titleContainer > h1 {
+  text-align: right;
+}
+
+.titleContainer div:first-of-type {
+  gap: 10px;
+}
+
+.titleContainer div h1 {
+  width: 10ch;
+  text-align: center;
+}
+
+.titleContainer button {
+  background: transparent;
+  color: #fff;
+  font-size: 2rem;
+  border: 0;
+  cursor: pointer;
+  padding-top: 4px;
+}
+
+.titleContainer button:hover {
+  color: #f00;
+}
+
+.calendar {
   min-height: 70%;
 }
 
-.header{
+.header {
   background: linear-gradient(to bottom, red 20%, darkred);
   list-style-type: none;
   padding: 16px 0;
@@ -34,21 +73,21 @@ h1{
   border-radius: 10px 10px 0 0;
 }
 
-.header li{
+.header li {
   flex-basis: 100%;
   text-align: center;
 }
 
-.header li:not(:last-child){
+.header li:not(:last-child) {
   border-right: 1px solid #fff;
 }
 
-.days{
+.days {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.taskButton{
+.taskButton {
   position: fixed;
   top: 32px;
   right: 32px;
@@ -60,7 +99,7 @@ h1{
   aspect-ratio: 1/1;
 }
 
-.notification{
+.notification {
   background: red;
   color: #fff;
   font-size: 1.5rem;
@@ -72,7 +111,7 @@ h1{
   right: -5px;
 }
 
-footer{
+footer {
   text-align: center;
-  margin-top: 32px;
+  padding: 32px 0;
 }

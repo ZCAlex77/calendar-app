@@ -43,7 +43,9 @@ export default function EventManager({ selectedDate, openState }) {
             onSubmit={handleSubmit}
             className={`${managerStyle.addEvent} ${flex.flexRow}`}
           >
-            <button>
+            <button
+              disabled={dateUtility.compareToToday(selectedDate) ? false : true}
+            >
               <AddIcon />
             </button>
             <input
@@ -52,6 +54,7 @@ export default function EventManager({ selectedDate, openState }) {
               placeholder="Type event name here"
               value={text}
               required
+              disabled={dateUtility.compareToToday(selectedDate) ? false : true}
             />
           </form>
         </li>
