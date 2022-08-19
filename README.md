@@ -21,7 +21,7 @@ A calendar app where you can plan events for the current month.
 ### How it works:
 
 The app uses local storage in order to store events. When the app is starting the saved data is passed as initial state to the redux store and displayed where it's needed; old events are automatically deleted in this step. For each addition/removal the local storage is updated with the new data.
-To add/remove new events you need to either click the event manager button (top left), which will open the manager for the current day (if no day was clicked) or for the selected day from the calendar; clicking on a day in the calendar opens it too. After opening the manager you'll be presented a list of events; you can add new ones by completing the text imput and submitting it; you can remove existing events by pressing the delete button on said event.
+To add/remove new events you need to either click the event manager button (top left), which will open the manager for the current day (if no day was clicked) or for the selected day from the calendar. After opening the manager you'll be presented a list of events; you can add new ones by completing the text imput and submitting it; you can remove existing events by pressing the delete button on said event.
 
 ### Things I would work on:
 
