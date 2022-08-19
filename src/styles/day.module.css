@@ -44,3 +44,6 @@
 .day:last-child {
   border-bottom-right-radius: 10px;
 }
+.day:nth-last-child(7) {
+  border-bottom-left-radius: 10px;
+}
