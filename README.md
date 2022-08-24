@@ -2,15 +2,12 @@
 
 ### Description:
 
-A calendar app where you can plan events for the current month.
+A calendar app & event planner.
 
-### Features
+### Preview
 
-- updated calendar with different colors for past, current and future days of the current month
-- event manager where you can check the events for a selected day from the calendar
-- addition and removal of events on specified days
-- markers for days with events, notification with number of events for the current selected day
-- auto-removal of events from past days
+![calendar](/preview/calendar.png)
+![event manager](/preview/event-manager.png)
 
 ### Technologies used:
 
@@ -18,12 +15,17 @@ A calendar app where you can plan events for the current month.
 - Redux, react-redux
 - Material UI
 
-### How it works:
+### Features
 
-The app uses local storage in order to store events. When the app is starting the saved data is passed as initial state to the redux store and displayed where it's needed; old events are automatically deleted in this step. For each addition/removal the local storage is updated with the new data.
-To add/remove new events you need to either click the event manager button (top left), which will open the manager for the current day (if no day was clicked) or for the selected day from the calendar. After opening the manager you'll be presented a list of events; you can add new ones by completing the text imput and submitting it; you can remove existing events by pressing the delete button on said event.
+- calendar
+  - color coded cells for each type of day (past, current, future)
+  - markers on days with events
+- event manager
+  - check events for the selected day
+  - add new events
+  - remove events
 
-### Things I would work on:
+### Things I may add
 
 - ~~improve the key generation for components when using the map() function~~
 - ~~add the ability to select the month (currently it's set to the current month)~~
